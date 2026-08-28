@@ -107,7 +107,7 @@ function cardHTML(d){
   const mapBtn = `<a class="action-btn btn-map" href="${d.maps}" target="_blank" rel="noopener">📍 Map</a>`;
   const locText = d.unit ? `${d.mall} · ${d.unit}` : d.mall;
   return `
-  <div class="card" data-id="${d.id}">
+  <div class="card" data-id="${d.id}" style="border-color:${color}">
     <div class="card-top" style="background:${color}">
       <span class="mall-tag"><span class="pball"></span>${d.mall === "Northpoint City" ? "Northpoint" : "Wisteria"}</span>
       <span class="type-badge">${d.cuisine}</span>

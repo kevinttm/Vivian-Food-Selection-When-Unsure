@@ -5,6 +5,11 @@
     --dex-cream:#F6F1E4;
     --dex-yellow:#FFCB05;
     --dex-blue:#3B4CCA;
+    --mb-purple-light:#9B4FE0;
+    --mb-purple:#6A1FB0;
+    --mb-purple-dark:#4B1080;
+    --mb-pink:#FF4FA8;
+    --mb-pink-dark:#E0308C;
     --ink:#26241D;
     --card-bg:#FFFFFF;
     --muted:#7A7566;
@@ -143,16 +148,31 @@
   }
   .ball-ring{
     position:absolute; inset:0; border-radius:50%;
-    background:conic-gradient(from -90deg, var(--dex-red) 0deg 180deg, #fff 180deg 360deg);
+    background:conic-gradient(from -90deg,
+      var(--mb-purple-light) 0deg 8deg,
+      var(--mb-purple) 8deg 172deg,
+      var(--mb-purple-dark) 172deg 180deg,
+      #fff 180deg 360deg);
     border:6px solid var(--dex-navy);
     box-shadow: var(--shadow);
     overflow:hidden;
     transition: transform 3.6s cubic-bezier(.17,.67,.16,1.0);
   }
+  .ball-band-accent{
+    position:absolute; left:-6px; right:-6px; top:50%; height:11px; transform:translateY(-33px);
+    background:linear-gradient(180deg, var(--mb-pink), var(--mb-pink-dark)); z-index:2;
+  }
   .ball-band{
     position:absolute; left:-6px; right:-6px; top:50%; height:22px; transform:translateY(-50%);
     background:var(--dex-navy); z-index:3;
   }
+  .ball-gem{
+    position:absolute; top:50%; width:16px; height:9px; background:var(--mb-pink);
+    border:2px solid var(--dex-navy); border-radius:50%; z-index:4;
+    transform:translateY(-46px);
+  }
+  .ball-gem.left{ left:calc(50% - 34px); transform:translateY(-46px) rotate(-18deg); }
+  .ball-gem.right{ right:calc(50% - 34px); transform:translateY(-46px) rotate(18deg); }
   #wheelSegments{ position:absolute; inset:6px; border-radius:50%; overflow:hidden; }
   .wheel-hub{
     position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
@@ -161,7 +181,7 @@
     box-shadow:0 3px 0 rgba(0,0,0,.2);
   }
   #spinBtn{
-    width:52px;height:52px;border-radius:50%; background:var(--dex-red);
+    width:52px;height:52px;border-radius:50%; background:radial-gradient(circle at 35% 30%, var(--mb-pink) 0%, var(--mb-pink-dark) 75%);
     border:4px solid var(--dex-navy); color:#fff; font-family:'Press Start 2P'; font-size:8px;
     cursor:pointer; box-shadow:inset 0 -3px 0 rgba(0,0,0,.25);
   }
@@ -182,11 +202,11 @@
   }
   @keyframes pop{ from{ transform:scale(.85); opacity:0;} to{ transform:scale(1); opacity:1;} }
   .reveal-top{
-    background:linear-gradient(135deg, var(--dex-yellow), #ffb703);
-    padding:14px 18px; font-family:'Press Start 2P'; font-size:10px; color:#5a3d00;
+    background:linear-gradient(135deg, var(--mb-purple-light), var(--mb-pink-dark));
+    padding:14px 18px; font-family:'Press Start 2P'; font-size:10px; color:#fff;
     display:flex; justify-content:space-between; align-items:center;
   }
-  .reveal-top button{ background:none;border:none;font-size:16px;cursor:pointer;color:#5a3d00; }
+  .reveal-top button{ background:none;border:none;font-size:16px;cursor:pointer;color:#fff; }
   .reveal-body{ padding:18px 20px 22px; }
 
   /* ---------- GRID / CARDS ---------- */
@@ -197,7 +217,7 @@
     display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:18px;
   }
   .card{
-    background:var(--card-bg); border-radius:var(--radius); border:3px solid var(--dex-navy);
+    background:var(--card-bg); border-radius:var(--radius); border:4px solid var(--dex-navy);
     box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column;
   }
   .card-top{
