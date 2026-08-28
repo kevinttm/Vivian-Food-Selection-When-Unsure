@@ -1,0 +1,10 @@
+{
+  "name": "yishun-food-dex",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pokémon-themed food stall directory for Northpoint City and Wisteria Mall, Yishun.",
+  "scripts": {
+    "dev": "npx serve . -l 3000",
+    "start": "npx serve ."
+  }
+}

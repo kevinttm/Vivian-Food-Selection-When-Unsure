@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yishun Food Dex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="dex-header">
+  <div class="dex-top-row">
+    <div class="lens"></div>
+    <div class="dex-title-wrap">
+      <div class="dex-title pixel">YISHUN FOOD DEX</div>
+      <div class="dex-sub">NORTHPOINT CITY × WISTERIA MALL — GOTTA EAT 'EM ALL</div>
+    </div>
+    <div class="lil-dots"><span class="dot-y"></span><span class="dot-g"></span><span class="dot-r"></span></div>
+  </div>
+
+  <div class="dex-screen wrap" style="padding:14px 16px;">
+    <div class="search-row">
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#26241D" stroke-width="2.4"/><line x1="21" y1="21" x2="16.2" y2="16.2" stroke="#26241D" stroke-width="2.4" stroke-linecap="round"/></svg>
+        <input id="searchInput" type="text" placeholder="Search stalls, e.g. ramen, mala, chicken rice…">
+      </div>
+      <div class="filter-panels">
+        <button class="filter-btn" id="priceBtn" type="button">💰 PRICE <span class="count-chip" id="priceCount" style="display:none;">0</span></button>
+        <div class="filter-panel" id="pricePanel"></div>
+      </div>
+      <div class="filter-panels">
+        <button class="filter-btn" id="cuisineBtn" type="button">🍜 CUISINE <span class="count-chip" id="cuisineCount" style="display:none;">0</span></button>
+        <div class="filter-panel" id="cuisinePanel"></div>
+      </div>
+      <div class="filter-panels">
+        <button class="filter-btn" id="mallBtn" type="button">🏬 MALL <span class="count-chip" id="mallCount" style="display:none;">0</span></button>
+        <div class="filter-panel" id="mallPanel"></div>
+      </div>
+      <button class="filter-btn" id="sortBtn" type="button">📍 SORT: NEAREST FIRST</button>
+      <button class="reset-btn" id="resetBtn" type="button">Reset filters</button>
+    </div>
+    <div class="result-count" id="chipRow"></div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="wheel-section">
+    <div class="wheel-eyebrow pixel">CAN'T DECIDE?</div>
+    <h2 class="wheel-h2">Throw the Poké Ball</h2>
+    <p class="wheel-p">Spins a random stall from your <b>current filters</b> below.</p>
+    <div class="wheel-stage">
+      <div class="pointer"></div>
+      <div class="ball-ring" id="ballRing">
+        <div id="wheelSegments"></div>
+        <div class="ball-band"></div>
+      </div>
+      <div class="wheel-hub"><button id="spinBtn" class="pixel" type="button">SPIN</button></div>
+    </div>
+    <div class="wheel-hint" id="wheelHint">116 stalls loaded and ready to catch.</div>
+  </section>
+
+  <section class="grid-section">
+    <h2 class="grid-h2">Full Pokédex Directory</h2>
+    <p class="grid-p" id="gridSubtitle">Showing 116 of 116 stalls</p>
+    <div class="grid" id="grid"></div>
+    <div class="empty-state" id="emptyState" style="display:none;">No stalls match those filters. Try releasing one back into the wild 🎣</div>
+  </section>
+
+  <footer>
+    Data compiled from the Northpoint City and Wisteria Mall directories plus live Google Maps listings.
+    Distances are straight-line ("as the crow flies") from postal code 760325 to each mall entrance, not walking distance to the exact unit.
+    Hours, unit numbers and menus change often — please confirm with the mall or Google Maps before visiting.
+  </footer>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="reveal-card">
+    <div class="reveal-top">
+      <span>⚡ GOTCHA!</span>
+      <button id="closeReveal" type="button">✕</button>
+    </div>
+    <div class="reveal-body" id="revealBody"></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
